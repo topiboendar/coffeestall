@@ -1,0 +1,57 @@
+.hero{
+    background-color: #FF9800;
+}
+.hero-row img{
+    width: 50%;
+}
+.hero-row h4{
+    font-size: 2rem;
+}
+.text-hero a{
+    font-size: 14px;
+}
+.product-row{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-gap: 20px;
+}
+.product-row .card-title{
+    font-size: 1rem;
+}
+.product-row .card-text{
+    font-size: 12px;
+}
+.fab-product{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 1.5rem;
+    margin-right: 12px;
+}
+@media screen and (min-width: 520px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns per row */
+    }
+    .product-row{
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 768px){
+
+}
+@media screen and (min-width: 1000px){
+    .hero-row img{
+        width: 470px;
+    }
+    .text-hero h4{
+        font-size: 3rem;
+    }
+    .text-hero p{
+        font-size: 1rem;
+    }
+    .product-row{
+        max-width: 800px;
+    }
+}
