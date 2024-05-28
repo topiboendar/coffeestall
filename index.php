@@ -1,5 +1,9 @@
 <?php
-    include_once "conn.php";
+    session_start();
+    // session_destroy();
+    // exit;
+
+    include "conn.php";
 
     // routing path 
     $parameter = '';
@@ -9,6 +13,34 @@
             $parameter = $key;
         }
     }
+    
+    # ==================
+    # HANDLE SESSION
+    # ==================   
+    
+    echo '<pre>';
+    var_dump($_SESSION);
+    echo '</pre>';
+
+    // session dummy
+    // $_SESSION['coffeestall_email'] = 'asd@mail.com';
+
+
+    $email = '';
+    if(isset($_SESSION['coffeestall_email'])){
+        $email = $_SESSION['coffeestall_email'];
+    }
+
+    include 'user_privilege.php';
+    
+    echo "Email yang aktif: $email<hr>
+            <br>Nama user: $nama_user
+            <br>Id role: $role_id
+            <br>is_login: $is_login
+            <br>alias: $alias
+    
+    
+    ";
 ?>
 
 <!DOCTYPE html>
@@ -24,9 +56,9 @@
 
 <body>
     <!-- header include by js -->
-    <?php include 'pages/layouts/header.php' ?>
+    <?php $parameter !== 'login' ? include 'pages/layouts/header.php' : '';?>
     <?php include 'routing.php'?>
-    <?php include 'pages/layouts/footer.php'?>
+    <?php $parameter !== 'login' ? include 'pages/layouts/footer.php' : '';?>
     <script src="vendor/jquery/dist/jquery.min.js"></script>
     <script src="vendor/popper.js/dist/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>

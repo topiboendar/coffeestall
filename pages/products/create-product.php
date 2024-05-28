@@ -14,7 +14,7 @@
                         <input type="text" 
                                class="form-control"
                                minlength="10"
-                               maxlength="30"
+                               maxlength="40"
                                id="nameProduct" 
                                name="nama_produk" 
                                required>

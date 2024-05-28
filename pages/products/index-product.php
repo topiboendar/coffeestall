@@ -63,10 +63,10 @@
                 }
             }
             
-            mysqli_close($conn);
+            // mysqli_close($conn);
         ?>
     </div>
 
-    <?= include "create-product.php"?>
+    <?php echo $role_id == 0 ? include 'create-product.php' : ''; ?>
 
 </section>
