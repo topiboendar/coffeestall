@@ -8,9 +8,9 @@
         $jumlah_item_keranjang = 0;
 
     } else {
-        $sql_queries_user = "SELECT *,
-                            (SELECT 0) jumlah_item_keranjang
-                            FROM tbl_pengguna WHERE email='$email'";
+        $sql_queries_user = "SELECT a.*,
+                            (SELECT COUNT(1) FROM tbl_keranjang WHERE user_id = a.id) jumlah_item_keranjang
+                            FROM tbl_pengguna a WHERE a.email='$email'";
         
         $result_data_login = mysqli_query($conn, $sql_queries_user) or die(mysqli_error($conn));
 

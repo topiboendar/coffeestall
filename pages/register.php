@@ -1,8 +1,8 @@
 <?php
 
-    echo '<pre>';
-    var_dump($_POST);
-    echo '</pre>';
+    // echo '<pre>';
+    // var_dump($_POST);
+    // echo '</pre>';
 
     if(isset($_POST['btn_daftar_akun'])){
         $email = $_POST['email'];
@@ -17,14 +17,37 @@
                                 VALUES ('$email', '$phone', '$password', '2', '$fullname')";
 
         if(mysqli_query($conn, $sql_query_account)){
-            echo "Data berhasil di inputkan";
+            echo "
+            <div class='modal fade' id='infoNewAccountSuccess' tabindex='-1' aria-labelledby='infoNewAccountSuccessLabel' aria-hidden='true'>
+                <div class='modal-dialog'>
+                    <div class='modal-content'>
+                        <div class='modal-header'>
+                            <h5 class='modal-title' id='infoNewAccountSuccessLabel'>Notifikasi</h5>
+                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                            </button>
+                        </div>
+                        <div class='modal-body'>
+                            <p>Akun berhasil didaftarkan, silahkan login.<p>
+                        </div>
+                        <div class='modal-footer'>
+                            <button type='button' class='btn btn-primary' data-dismiss='modal'>Lanjutkan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src='vendor/jquery/dist/jquery.min.js'></script>
+            <script src='vendor/popper.js/dist/umd/popper.min.js'></script>
+            <script src='assets/js/bootstrap.min.js'></script>
+            <script>
+                $('#infoNewAccountSuccess').modal('show');
+            </script>";
         } else {
             echo "Error: " . $sql_query_account . "<br>" . mysqli_error($conn);
         }
     }
 
 ?>
-
 <div id="register_page" class="row align-items-center h-100 d-none">
     <div class="col col-lg-5 h-100 w-100 d-none d-md-block pr-md-0">
         <div class="row h-100 w-100 bg-warning align-items-center justify-content-center">
@@ -40,27 +63,26 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="email" class="form-control" id="email" name="email">
                         </div>
                     </div>
                     <div class="col">
                     <div class="form-group">
                             <label for="phone">Phone</label>
                             <input type="text" class="form-control" id="phone" name="phone">
-                            <div class='invalid-feedback'>Harap masukan nomer yang bisa dihubungi</div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="fullname">Nama Lengkap</label>
-                    <input type="text" class="form-control" id="fullname" name="fullname" aria-describedby="fullnameGuide" required>
+                    <input type="text" class="form-control" id="fullname" name="fullname" aria-describedby="fullnameGuide">
                     <small id="fullnameGuide" class="form-text text-muted">Masukan nama lengkap anda.</small>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
                             <label for="regist_password">Password</label>
-                            <input type="password" class="form-control" id="regist_password" name="password" required>
+                            <input type="password" class="form-control" id="regist_password" name="password">
                         </div>
                     </div>
                     <div class="col">
